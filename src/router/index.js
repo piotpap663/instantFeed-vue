@@ -5,6 +5,7 @@ import AddPost from '../components/AddPost/AddPost.vue';
 import Dashboard from '../components/Dashboard/Dashboard.vue';
 import EntryPage from '../components/EntryPage/EntryPage.vue';
 import NotFound from '../components/NotFound.vue';
+import { getAllPostsExceptUser, getUserPosts, getUserPostSubscribersPostLikedBySubscribersPost } from '../services/api';
 import store from '../store';
 
 Vue.use(VueRouter)
@@ -25,7 +26,8 @@ const routes = [
     path: '/dashboard',
     name: 'dashboard',
     component: Dashboard,
-    beforeEnter: checkIfUserIsLoggedIn
+    props: { getPosts: getUserPostSubscribersPostLikedBySubscribersPost },
+    beforeEnter: checkIfUserIsLoggedIn,
   },
   {
     path: '/addPost',
@@ -37,12 +39,14 @@ const routes = [
     path: '/user/:id',
     name: 'userPage',
     component: Dashboard,
+    props: { getPosts: getUserPosts },
     beforeEnter: checkIfUserIsLoggedIn
   },
   {
     path: '/explore',
     name: 'explore',
     component: Dashboard,
+    props: { getPosts: getAllPostsExceptUser },
     beforeEnter: checkIfUserIsLoggedIn
   },
   {
@@ -50,13 +54,15 @@ const routes = [
     name: 'NotFound',
     component: NotFound
   },
-
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  },
 })
 
 export default router

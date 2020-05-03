@@ -1,0 +1,10 @@
+<div>
+  <p v-if="uploaded">{{uploadedText}}</p>
+  <form v-if="!uploaded" @submit="onFormSubmit($event)">
+    <h1>File Upload</h1>
+    <input type="file" @change="onChange($event)" />
+    <textarea name="text" id="text" cols="30" rows="10" v-model="text" defaultValue="text"></textarea>
+    <div v-if="errors.length" class="errors">{{errors.toString()}}</div>
+    <button type="submit">Upload</button>
+  </form>
+</div>

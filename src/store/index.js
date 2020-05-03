@@ -8,15 +8,16 @@ Vue.use(Vuex)
 //   permission: 'USER',
 //   subscribers: ['5e765fc65897a60e114c2c16']
 // };
+const getDefaultAuthState = () => ({
+  user: '',
+  _id: '',
+  permission: '',
+  subscribers: [],
+  created_at: ''
+});
 const getDefaultState = () => {
   return {
-    auth: {
-      user: '',
-      _id: '',
-      permission: '',
-      subscribers: [],
-      created_at: ''
-    },
+    auth: getDefaultAuthState(),
     posts: []
   }
 }
@@ -27,7 +28,7 @@ export default new Vuex.Store({
       Object.assign(state.auth, user);
     },
     LOGOUT: function (state) {
-      Object.assign(state.auth, getDefaultState());
+      Object.assign(state.auth, getDefaultAuthState());
     },
     SET_SUBSCRIBERS: function (state, subscribers) {
       state.auth.subscribers = subscribers;
