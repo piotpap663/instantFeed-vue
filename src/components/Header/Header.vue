@@ -5,7 +5,6 @@ import { logoutUser } from "../../services/api/index";
 export default {
   computed: {
     isAuthenticated() {
-      console.log(!!this.$store.state.auth, "isauth");
       return !!this.$store.state.auth.user;
     }
   },

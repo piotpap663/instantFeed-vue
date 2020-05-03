@@ -36,7 +36,7 @@ export default {
               alert(response.data.info);
             } else {
               this.$store.dispatch("loginUser", response.data);
-              this.$router.push({ path: "/" });
+              this.$router.push({ path: "/dashboard" });
             }
           })
           .catch(function(error) {

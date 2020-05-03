@@ -1,0 +1,27 @@
+<div v-if="postUser" class="postHeader">
+  <router-link :to="`/user/${postAuthorId}`"> <img class="headerLogo"
+      :src="postUser.avatar || '../../../assets/icons/avatar.jpg'" alt="" />
+    <span class="author">
+      {{postUser.user}}
+    </span>
+  </router-link>
+
+  <div class="timestamp">
+    {{postCreatedAt | localDate}}
+  </div>
+  <template v-if="postAuthorId === userId">
+    <PostHeaderRemove :postId='postId'></PostHeaderRemove>
+  </template>
+  <div v-if="postAuthorId !== userId">
+    <template v-if="subscribers.includes(postAuthorId)">
+      <div class="unSubscribeUser">
+        <button @click="handleUnsubscribe($event)">{{"Subskrybujesz"}}</button>
+      </div>
+    </template>
+    <template v-if="!subscribers.includes(postAuthorId)">
+      <div class="subscribeUser">
+        <button @click="handleSubscribe($event)">{{"Subskrybuj"}}</button>
+      </div>
+    </template>
+  </div>
+</div>

@@ -1,12 +1,10 @@
-<template src="./Dashboard.html"></template>
+<template src="./PostContent.html"></template>
 
 <script>
-// import Header from "../Header";
 export default {
-  // components: {
-  //   Header
-  // }
+  props: ["postText", "postImages"]
 };
 </script>
-<style lang="scss" src="./Dashboard.scss" scoped>
+
+<style lang="scss" src="./PostContent.scss" scoped>
 </style>

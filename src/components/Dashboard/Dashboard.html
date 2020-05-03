@@ -1,3 +1,3 @@
-<div>
-  Dasbhoard
+<div v-if="userId && subscribers" class="wrapper">
+  <Post v-for="p of posts" :post="p" :key="p._id"></Post>
 </div>

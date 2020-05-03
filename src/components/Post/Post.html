@@ -1,0 +1,10 @@
+<div class="postWrapper">
+  <div class="container">
+    <PostHeader :postId='post._id' :postUser='post.user || defaultUser' :postCreatedAt='post.created_at'
+      :postAuthorId='post.authorId'>
+    </PostHeader>
+    <PostContent :postText="post.text" :postImages='post.images'></PostContent>
+    <PostInfo :postId='post._id' :postLikes='post.likes' :postAuthorId='post.authorId' :postLiked='post.liked'
+      :postComments='post.comments'></PostInfo>
+  </div>
+</div>

@@ -10,41 +10,44 @@ Vue.use(Vuex)
 // };
 const getDefaultState = () => {
   return {
-    user: '',
-    _id: '',
-    permission: '',
-    subscribers: [],
-    created_at: ''
+    auth: {
+      user: '',
+      _id: '',
+      permission: '',
+      subscribers: [],
+      created_at: ''
+    },
+    posts: []
   }
 }
-const auth = {
+export default new Vuex.Store({
   state: getDefaultState(),
   mutations: {
-    login: function (state, user) {
-      Object.assign(state, user);
+    LOGIN: function (state, user) {
+      Object.assign(state.auth, user);
     },
-    logout: function (state) {
-      Object.assign(state, getDefaultState());
+    LOGOUT: function (state) {
+      Object.assign(state.auth, getDefaultState());
     },
-    setSubscribers: function (state, subscribers) {
-      state.subscribers = subscribers;
+    SET_SUBSCRIBERS: function (state, subscribers) {
+      state.auth.subscribers = subscribers;
+    },
+    SET_POSTS: function (state, posts) {
+      Vue.set(state, 'posts', [...posts]);
     },
   },
   actions: {
     loginUser({ commit }, user) {
-      commit('login', user);
+      commit('LOGIN', user);
     },
     logoutUser({ commit }) {
-      commit('logout');
+      commit('LOGOUT');
     },
     setSubscribers({ commit }, subscribers) {
-      commit('setSubscribers', subscribers);
+      commit('SET_SUBSCRIBERS', subscribers);
     },
-  }
-};
-export default new Vuex.Store({
-  modules: {
-    auth
-  }
-}
-)
+    setPosts({ commit }, posts) {
+      commit('SET_POSTS', posts);
+    },
+  },
+});
