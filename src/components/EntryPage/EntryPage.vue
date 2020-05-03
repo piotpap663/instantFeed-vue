@@ -1,28 +1,7 @@
-<template>
-  <div class="entryPage">
-    <button class="button" @click="showLoginPage = !showLoginPage">
-      {{!showLoginPage ? "Logowanie" : null}}
-      {{showLoginPage ? "Załóż konto" : null}}
-    </button>
-    <div class="form">
-      <div class="loginForm">
-        <label>Username:</label>
-        <input type="text" name="user" v-model="userName" />
-      </div>
-      <div class="loginForm">
-        <label>Password:</label>
-        <input type="password" name="password" v-model="userPassword" />
-      </div>
-      <button
-        class="login"
-        @click="showLoginPage ? handleLogin($event) : handleRegister($event)"
-      >{{showLoginPage? 'Zaloguj' : 'Zarejestruj'}}</button>
-    </div>
-  </div>
-</template>
+<template src="./EntryPage.html"></template>
 
 <script>
-import { loginUser, registerUser } from "../services/api/index";
+import { loginUser, registerUser } from "../../services/api/index";
 export default {
   data() {
     return {
@@ -71,6 +50,5 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
+<style lang="scss" src="./EntryPage.scss" scoped>
 </style>

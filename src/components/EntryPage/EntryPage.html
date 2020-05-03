@@ -1,0 +1,18 @@
+<div class="entryPage">
+  <button class="button" @click="showLoginPage = !showLoginPage">
+    {{!showLoginPage ? "Logowanie" : null}}
+    {{showLoginPage ? "Załóż konto" : null}}
+  </button>
+  <div class="form">
+    <div class="loginForm">
+      <label>Username:</label>
+      <input type="text" name="user" v-model="userName" />
+    </div>
+    <div class="loginForm">
+      <label>Password:</label>
+      <input type="password" name="password" v-model="userPassword" />
+    </div>
+    <button class="login"
+      @click="showLoginPage ? handleLogin($event) : handleRegister($event)">{{showLoginPage? 'Zaloguj' : 'Zarejestruj'}}</button>
+  </div>
+</div>
