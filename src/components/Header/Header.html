@@ -1,28 +1,24 @@
 <div class="wrapper">
   <div class="con">
-    <div class="header mainLogo">
-      <router-link to="/dashboard">
-        <button>Home</button>
+    <router-link to="/dashboard">
+      <button>Home</button>
+    </router-link>
+    <nav class="actionButtons">
+      <router-link to="/addPost">
+        <button>Dodaj post</button>
       </router-link>
-    </div>
-    <div class="header search w-50">
-      <input type="text" placeholder="Szukaj" />
-    </div>
-    <div class="header flexEnd">
-      <nav class="actionButtons">
-        <router-link to="/addPost">
-          <button>Add post</button>
-        </router-link>
-        <router-link to="/explore">
-          <button>Explore</button>
-        </router-link>
-        <router-link v-if="isAuthenticated" to="/login" @click.native="logoutUserFromApp()">
-          <button>Wyloguj</button>
-        </router-link>
-        <router-link v-if="!isAuthenticated" to="/login">
-          <button>Zaloguj</button>
-        </router-link>
-      </nav>
-    </div>
+      <router-link to="/explore">
+        <button>Odkryj</button>
+      </router-link>
+      <router-link :to="`/user/${userId}`">
+        <button>Moje</button>
+      </router-link>
+      <router-link v-if="isAuthenticated" to="/login" @click.native="logoutUserFromApp()">
+        <button>Wyloguj</button>
+      </router-link>
+      <router-link v-if="!isAuthenticated" to="/login">
+        <button>Zaloguj</button>
+      </router-link>
+    </nav>
   </div>
 </div>

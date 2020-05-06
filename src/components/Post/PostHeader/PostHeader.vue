@@ -8,7 +8,7 @@ export default {
   components: {
     PostHeaderRemove
   },
-  props: ["postId", "postUser", "postCreatedAt", "postAuthorId"],
+  props: ["postId", "postUser", "postAuthorId"],
   computed: mapState({
     userId: state => state.auth._id,
     subscribers: state => state.auth.subscribers
@@ -43,13 +43,6 @@ export default {
         .catch(error => {
           console.error(error);
         });
-    }
-  },
-  filters: {
-    localDate: function(value) {
-      if (!value) return "";
-      value = new Date(value).toLocaleString();
-      return value;
     }
   }
 };

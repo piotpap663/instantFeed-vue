@@ -5,7 +5,14 @@ import { mapState } from "vuex";
 import { likePost } from "../../../services/api/index";
 import { getLikedPosts } from "../../../services/helpers";
 export default {
-  props: ["postLikes", "postId", "postAuthorId", "postLiked", "postComments"],
+  props: [
+    "postLikes",
+    "postId",
+    "postAuthorId",
+    "postLiked",
+    "postComments",
+    "postCreatedAt"
+  ],
   computed: mapState({
     userId: state => state.auth._id,
     posts: state => state.posts
@@ -29,6 +36,13 @@ export default {
         .catch(error => {
           console.error(error);
         });
+    }
+  },
+  filters: {
+    localDate: function(value) {
+      if (!value) return "";
+      value = new Date(value).toLocaleString();
+      return value;
     }
   }
 };

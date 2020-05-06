@@ -6,6 +6,9 @@ export default {
   computed: {
     isAuthenticated() {
       return !!this.$store.state.auth.user;
+    },
+    userId() {
+      return this.$store.state.auth._id;
     }
   },
   methods: {

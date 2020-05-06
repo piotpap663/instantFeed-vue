@@ -1,14 +1,10 @@
 <div v-if="postUser" class="postHeader">
   <router-link :to="`/user/${postAuthorId}`"> <img class="headerLogo"
-      :src="postUser.avatar || '../../../assets/icons/avatar.jpg'" alt="" />
+      :src="postUser.avatar || require('../../../resources/icons/avatar.webp')" alt="" />
     <span class="author">
       {{postUser.user}}
     </span>
   </router-link>
-
-  <div class="timestamp">
-    {{postCreatedAt | localDate}}
-  </div>
   <template v-if="postAuthorId === userId">
     <PostHeaderRemove :postId='postId'></PostHeaderRemove>
   </template>

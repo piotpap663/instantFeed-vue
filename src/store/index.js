@@ -2,12 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 Vue.use(Vuex)
-// const getDefaultState = {
-//   user: 'piotr',
-//   _id: '5ea58dc614589d2080fc7ce8',
-//   permission: 'USER',
-//   subscribers: ['5e765fc65897a60e114c2c16']
-// };
+
 const getDefaultAuthState = () => ({
   user: '',
   _id: '',
