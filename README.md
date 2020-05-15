@@ -1,3 +1,11 @@
+## How to run project ?
+Run mongoDB and server [https://github.com/piotpap663/instantFeed-server](https://github.com/piotpap663/instantFeed-server)
+
+`yarn install` then 
+
+`yarn start`
+
+
 # instantfeedvue
 
 ## Project setup
